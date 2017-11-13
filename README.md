@@ -13,7 +13,7 @@ XQR(XiangQi Replay)是一种全新的象棋棋谱格式，它有以下特点：
 * CBR - 私有格式，不开放
 
 # XQR格式
-XQR文件由多个TLV（type-length-value）序列，Type和Length各占一字节，Value部分长度由Length字段决定。XQR文件包含以下内容：
+XQR文件由多个TLV（type-length-value）序列组成，Type和Length各占一字节，Value部分长度由Length字段决定。XQR文件包含以下内容：
 * 棋谱信息
 * 着法
 * CRC
@@ -35,7 +35,7 @@ XQR文件由多个TLV（type-length-value）序列，Type和Length各占一字�
 
 如果碰到TYPE_MOVE的TLV，则棋谱信息部分结束。TYPE_MOVE为一个特殊的TLV，Length字段为0，后面跟的是着法数据。
 
-2. 着法部分仅包含一个TLV，Type为TYPE_MOVE。由于此时不能确定Value部分即着法数据的总长度，Length为0。Value部分为一棵以左孩子右兄弟方式存储的树，每个节点表示一个着法。如果不包含评论，每个节点存储4字节数据：
+2. 着法部分仅包含一个TLV，Type为TYPE_MOVE。由于此时不能确定Value部分即着法数据的总长度，它的Length为0。Value部分为一棵以左孩子右兄弟方式存储的树，每个节点表示一个着法。如果不包含评论，每个节点存储4字节数据：
 ```
 [B0][B1][B2][B3]
 ```
